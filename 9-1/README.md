@@ -24,7 +24,7 @@ npx sequelize init
 ```
 npm i express cookie-parser express-session morgan multer dotenv nunjucks 
 ```
-8. 이후 개발용 서버 node-mon
+8. 이후 개발용 서버 node-mon 설정 -> 파일변경 확인
 ```
 npm i -D nodemon
 ```
