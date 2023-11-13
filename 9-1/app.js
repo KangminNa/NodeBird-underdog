@@ -27,6 +27,7 @@ dotenv.config();
 
 // 페이지 라우팅을 위한 라우터를 가져옵니다.
 const pageRouter = require('/Users/mac_nkm/Documents/GitHub/NodeBird-underdog/9-1/routes/page.js');
+const { sequelize } = require('./models');
 
 // express 앱을 생성합니다.
 const app = express();
@@ -42,6 +43,11 @@ nunjucks.configure('views', {
     express: app, // Express 앱을 Nunjucks에 연결합니다.
     watch: true, // 파일 변경을 감지하여 자동으로 업데이트합니다.
 });
+
+sequelize.sync({ force: false }).then(() => {
+    console.log('데이터베이스 연결 성공')
+    //개발시에만 force:true 왜냐면 기존 테이블이 다 날라가버리기 때문
+})
 
 // 요청에 대한 HTTP 로그를 남깁니다. ('dev' 형식을 사용하여 개발용 로그를 출력합니다.) 추후 배포는 ('combined') 입니다.
 app.use(morgan('dev'));
